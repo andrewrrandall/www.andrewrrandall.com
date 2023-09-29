@@ -1,35 +1,87 @@
-
-.topnav {
-  background-color: #D3D3D3;
-  overflow: hidden;
-  border: 1px solid black;
-  position:right
-}
-
 /* Style the links inside the navigation bar */
-.topnav a {
-  float: right;
-  color: #000;
+.topnav {
   text-align: center;
-  padding: 20px 16px;
+  padding: 15px;
   text-decoration: none;
-  font-size: 17px;
-  font-family: "Times New Roman";
+  font-size: 20px;
+  font-family: Arial, serif-pro;
+  overflow: hidden;
 }
 
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+.body {
+  min-height: 100%;
 }
 
-.body-text {
-text-align: center
-font-size: 18px;
-font-family: "Times New Roman";
+.circle {
+  border-radius: 50%; 
+  overflow: hidden; 
+  max-height: 250px;
+  max-width: 250px;
+  margin: auto;
+  width: 250px;
+  height: 250px;
+  }
+
+.circle img {
+  display: block; 
+  object-fit: cover;
+  width: 250px;
+  height: 250px;
+}
+
+@media only screen and (max-width: 600px) {
+  .body-text {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.7px;
+  }
 }
 
 .center {
   text-align: center;
-  font-family: "Times New Roman";
+  font-family: Arial, serif-pro;
+  min-height: 100vh;
+}
+
+/* Define the main Navigation block */
+.MyNav a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px;
+  color: darkgray;
+}
+
+.MyNav a:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: darkgray;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.MyNav a:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.MyNav a:visited {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  color: darkgray;
+  background-color: darkgray;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
 }
