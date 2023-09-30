@@ -10,6 +10,7 @@
 
 .body {
   min-height: 100%;
+  text-align: center;
 }
 
 .circle {
@@ -51,6 +52,8 @@
   display: inline-block;
   text-decoration: none;
   padding: 5px;
+  font-size: 16px;
+  font-family: Arial, serif-pro;
   color: darkgray;
 }
 
@@ -84,4 +87,20 @@
   visibility: hidden;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out 0s;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.responsive-iframe {
+  width: 40vw; /* Set a specific width for the iframe, adjust as needed */
+  height: 80vh; /* Set a specific height for the iframe, adjust as needed */
+  border: none;
+  zoom: 1.25; /* Adjust the zoom factor as needed to make the content inside the iframe more visible */
 }
