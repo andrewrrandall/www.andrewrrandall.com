@@ -99,5 +99,7 @@
 
 .responsive-iframe {
   border: none;
+  width: 800px;
+  height: 1200px;
   zoom: 0; /* Adjust the zoom factor as needed to make the content inside the iframe more visible */
 }
