@@ -110,6 +110,47 @@ a:hover {
   text-decoration: none;
 }
 
+/* Home heading: each word falls in from above, one after another */
+.drop-word {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  animation: drop-in 1s both;
+  animation-delay: calc(var(--i) * 160ms + 150ms);
+}
+
+@keyframes drop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100vh);
+    animation-timing-function: cubic-bezier(.55, 0, 1, .45);
+  }
+  8% {
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(0) scale(1.06, .9);
+    animation-timing-function: cubic-bezier(0, .55, .45, 1);
+  }
+  72% {
+    transform: translateY(-.2em) scale(.98, 1.03);
+    animation-timing-function: cubic-bezier(.55, 0, 1, .45);
+  }
+  86% {
+    transform: translateY(0) scale(1.02, .97);
+    animation-timing-function: cubic-bezier(0, .55, .45, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drop-word {
+    animation: none;
+  }
+}
+
 .site-header--compact {
   padding-top: 2rem;
 }

@@ -18,7 +18,12 @@
         <p class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></p>
     {% else %}
     <header class="site-header no-print">
-        <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ page.heading | default: "my writing" }}</a></h1>
+        {% assign heading = page.heading | default: "my writing" %}
+        {% if page.main_class == 'home' %}
+        <h1 class="site-title site-title--drop"><a href="{{ '/' | relative_url }}">{% assign words = heading | split: " " %}{% for word in words %}<span class="drop-word" style="--i: {{ forloop.index0 }}">{{ word }}</span>{% unless forloop.last %}&#32;{% endunless %}{% endfor %}</a></h1>
+        {% else %}
+        <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ heading }}</a></h1>
+        {% endif %}
     {% endif %}
         <nav class="site-nav" aria-label="Main">
             {% assign nav = "home:/|writing:/blogs/writing.html|resume:/resume.html|work with me:/work-with-me.html" | split: "|" %}
