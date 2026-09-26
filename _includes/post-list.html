@@ -1,11 +1,17 @@
 <ul class="post-list">
     {% assign max = include.limit | default: 1000 %}
     {% for post in include.posts limit: max %}
+    {% assign words = post.content | number_of_words %}
+    {% assign minutes = words | divided_by: 200 | at_least: 1 %}
     <li>
-        <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <p class="post-list-excerpt">{{ post.description | default: post.excerpt | strip_html | strip_newlines | truncate: 160 }}</p>
+        <p class="post-list-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            &middot; {{ minutes }} min read
+        </p>
     </li>
     {% else %}
-    <li>nothing here yet.</li>
+    <li class="post-list-empty">nothing here yet.</li>
     {% endfor %}
 </ul>

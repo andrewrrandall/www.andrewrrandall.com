@@ -4,10 +4,18 @@ layout: default
 {% assign words = content | number_of_words %}
 {% assign minutes = words | divided_by: 200 | at_least: 1 %}
 <article class="post">
-    <h2 class="post-title">{{ page.title }}</h2>
-    <p class="post-meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-        &middot; {{ minutes }} min read
-    </p>
-    {{ content }}
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}<p class="post-subtitle">{{ page.description }}</p>{% endif %}
+        <p class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+            &middot; {{ minutes }} min read
+        </p>
+    </header>
+    <div class="post-body">
+        {{ content }}
+    </div>
+    <footer class="post-footer">
+        <a href="{{ '/blogs/writing.html' | relative_url }}">&larr; all posts</a>
+    </footer>
 </article>

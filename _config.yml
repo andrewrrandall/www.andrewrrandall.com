@@ -15,6 +15,18 @@ defaults:
       path: ""
     values:
       image: /photos/IMG_0043.JPG
+  # Posts are plain markdown: {{ ref('...') }} and other dbt/jinja code shows up as-is.
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      render_with_liquid: false
+  - scope:
+      path: "_drafts"
+    values:
+      layout: post
+      render_with_liquid: false
 
 markdown: kramdown
 kramdown:

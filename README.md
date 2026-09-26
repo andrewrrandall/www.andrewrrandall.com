@@ -17,7 +17,8 @@ and deploys.
 
 2. Write the post in Markdown below the `---` header block. Optionally uncomment the
    `description:` line to control the link-preview text. Fenced code blocks
-   (```` ```python ````) get syntax highlighting.
+   (```` ```python ````) get syntax highlighting, and dbt/Jinja like `{{ ref('orders') }}`
+   shows up exactly as written (template processing is turned off for posts).
 3. When it's ready:
 
    ```sh
@@ -51,5 +52,5 @@ site since it doesn't run Jekyll.)
 - `_config.yml` – site title/description, social links, plugins
 - `_data/resume.yml` – resume content
 - `index.html` – home page; `blogs/writing.html` – list of all posts; `404.html`
-- `style.css` – all site styling
+- `style.css` – all site styling (body text is Source Serif 4, self-hosted in `fonts/`)
 - `resume.html` – resume page template (content lives in `_data/resume.yml`)

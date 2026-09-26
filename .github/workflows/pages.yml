@@ -36,14 +36,13 @@ jobs:
           }
         env:
           JEKYLL_ENV: production
-          PAGES_REPO_NWO: ${{ github.repository }}
-          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Render resume PDF
         run: |
           python3 -m http.server 8000 --directory _site >/dev/null 2>&1 &
           for i in $(seq 1 20); do curl -sf http://localhost:8000/resume.html >/dev/null && break; sleep 0.5; done
           google-chrome --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer \
+            --run-all-compositor-stages-before-draw --virtual-time-budget=10000 \
             --print-to-pdf=_site/andrew-randall-resume.pdf http://localhost:8000/resume.html
           test -s _site/andrew-randall-resume.pdf
 
