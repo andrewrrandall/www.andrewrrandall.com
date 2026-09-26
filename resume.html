@@ -49,7 +49,7 @@ main_class: resume-page
         <h3 class="resume-section">Education</h3>
         {% for e in r.education %}
         <div class="resume-row">
-            <span><strong>{{ e.school | escape }}</strong> | <em>{{ e.degree | escape }}</em> | {{ e.location | escape }}</span>
+            <span><strong>{{ e.school | escape }}</strong> | <em>{{ e.degree | escape }}</em> | <span class="nowrap">{{ e.location | escape }}</span></span>
             <span>{{ e.dates | escape }}</span>
         </div>
         {% endfor %}
