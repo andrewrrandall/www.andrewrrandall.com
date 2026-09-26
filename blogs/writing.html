@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Blog Post Title Here</title>
-    <link rel="stylesheet" href="blog_post.css">
-</head>
-<body>
-    <header>
-        <h1>my writing</h1>
-        <link rel="stylesheet" href="../style.css">
-        <hr>
-        <div class="MyNav">
-                <a href="../index.html">home</a>
-                <a href="writing.html">writing</a>
-        </div>
-        <hr> 
-    </header>
-<article>
-    <section>
-        <h2>posts</h2>
-        <ul>
-            <li><a href="industry_analysis_with_python_and_duckdb.html">python + duckdb + salesforce </a> </li>
-            <!-- Add more links as needed -->
-        </ul>
-    </section>
-</article>
-    <footer>
-        <p>&copy; 2024 andrewrrandall.com. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+---
+layout: default
+title: writing
+---
+<section>
+    <h2>posts</h2>
+    <ul class="post-list">
+        {% for post in site.posts %}
+        <li>
+            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

@@ -1,0 +1,13 @@
+title: andrew randall
+url: "https://andrewrrandall.com"
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Posts live in _posts/ and are published at /blogs/<slug>.html
+permalink: /blogs/:title.html
+
+exclude:
+  - README.md
+  - new-post.sh
+  - files
