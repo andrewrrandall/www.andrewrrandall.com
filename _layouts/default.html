@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ '/photos/IMG_0043.JPG' | relative_url }}" type="image/jpeg">
 </head>
 <body>
-    <header class="site-header">
+    <header class="site-header no-print">
         <h1><a href="{{ '/' | relative_url }}">{{ page.heading | default: "my writing" }}</a></h1>
         <nav class="site-nav">
             <a href="{{ '/' | relative_url }}">home</a>
@@ -20,7 +20,7 @@
     <main class="{{ page.main_class | default: 'content' }}">
         {{ content }}
     </main>
-    <footer class="site-footer">
+    <footer class="site-footer no-print">
         <p>&copy; {{ site.time | date: "%Y" }} andrewrrandall.com &middot; <a href="{{ '/feed.xml' | relative_url }}">rss</a></p>
     </footer>
 </body>

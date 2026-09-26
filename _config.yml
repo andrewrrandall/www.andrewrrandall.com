@@ -55,7 +55,7 @@ social_links:
 exclude:
   - README.md
   - new-post.sh
-  - serve.sh
+  - publish-post.sh
   - files
   - Gemfile
   - Gemfile.lock
