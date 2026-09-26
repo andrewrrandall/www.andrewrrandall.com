@@ -1,7 +1,9 @@
 title: andrew randall
 description: "Andrew Randall's personal site and blog."
 url: "https://andrewrrandall.com"
-author: Andrew Randall
+author:
+  name: Andrew Randall
+  twitter: andrewrrandall
 lang: en_US
 twitter:
   username: andrewrrandall
