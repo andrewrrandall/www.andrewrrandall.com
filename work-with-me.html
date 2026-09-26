@@ -1,0 +1,124 @@
+---
+layout: default
+title: work with me
+heading: work with me
+description: "Hire Andrew Randall for help with dbt, Snowflake, Salesforce, BI, and data platform problems."
+---
+<section class="work">
+    <p class="work-lede">
+        got a data problem that's slowing your team down? i help companies untangle messy warehouses,
+        speed up (and cut the cost of) their data stack, and get people self-serving on analytics
+        they actually trust. open to projects, fractional/ongoing help, and full-time roles.
+    </p>
+
+    <h2 class="section-title">what i can help with</h2>
+    <ul class="work-areas">
+        <li><strong>dbt</strong> project setup, refactors, testing, slim CI/CD, and incremental models that don't fall over</li>
+        <li><strong>snowflake</strong> cost reduction, performance tuning, and warehouse architecture</li>
+        <li><strong>salesforce</strong> data quality, reporting, territory/scoring models, and reverse ETL (certified admin)</li>
+        <li><strong>business intelligence</strong> semantic layers, dashboards, and embedded analytics in omni, looker, and tableau</li>
+        <li><strong>data platform</strong> pipelines and orchestration with prefect or dagster, kimball data modeling</li>
+        <li><strong>analytics</strong> a/b testing, attribution, and defining metrics your whole company agrees on</li>
+    </ul>
+
+    <h2 class="section-title">a few results</h2>
+    <ul class="work-results">
+        <li>cut snowflake spend <strong>50% ($60K)</strong> and production runtime 26% with a warehouse refactor</li>
+        <li>automated <strong>1,500+ customer dashboards</strong> so analytics shipped within hours of a customer config change</li>
+        <li>migrated the primary user key across <strong>300+ dbt models</strong> with a gradual, blue-green rollout</li>
+    </ul>
+
+    <h2 class="section-title">tell me about it</h2>
+    <form class="work-form" id="work-form"
+          action="https://formsubmit.co/{{ site.contact_form_id }}" method="POST">
+        <input type="hidden" name="_subject" value="New work inquiry from andrewrrandall.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{{ '/thanks.html' | absolute_url }}">
+        <input type="text" name="_honey" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-row">
+            <label>name
+                <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label>email
+                <input type="email" name="email" autocomplete="email" required>
+            </label>
+        </div>
+
+        <label><span>company <span class="optional">(optional)</span></span>
+            <input type="text" name="company" autocomplete="organization">
+        </label>
+
+        <fieldset>
+            <legend>what do you need help with?</legend>
+            <div class="chips">
+                {% assign topics = "Salesforce|dbt|Snowflake|BI & dashboards|Data pipelines / platform|Analytics & experimentation|Something else" | split: "|" %}
+                {% for t in topics %}
+                <label class="chip"><input type="checkbox" name="help_with" value="{{ t }}"> <span>{{ t | downcase }}</span></label>
+                {% endfor %}
+            </div>
+        </fieldset>
+
+        <div class="form-row">
+            <label>type of work
+                <select name="engagement">
+                    <option value="Not sure yet">not sure yet</option>
+                    <option value="Project (defined scope)">project (defined scope)</option>
+                    <option value="Ongoing / fractional">ongoing / fractional</option>
+                    <option value="Advice / quick call">advice / quick call</option>
+                    <option value="Full-time role">full-time role</option>
+                </select>
+            </label>
+            <label>timeline
+                <select name="timeline">
+                    <option value="Flexible">flexible</option>
+                    <option value="ASAP">asap</option>
+                    <option value="Within a month">within a month</option>
+                    <option value="1-3 months">1&ndash;3 months</option>
+                </select>
+            </label>
+        </div>
+
+        <label>what's going on?
+            <textarea name="message" rows="6" required
+                      placeholder="the problem, your current stack, and what a win looks like"></textarea>
+        </label>
+
+        <button type="submit" class="button">send</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="work-alt">rather just email? <a href="mailto:andrewraymondrandall@gmail.com">andrewraymondrandall@gmail.com</a></p>
+</section>
+
+<script>
+document.getElementById('work-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const status = document.getElementById('form-status');
+    const button = form.querySelector('button[type="submit"]');
+
+    const data = {};
+    new FormData(form).forEach(function (value, key) {
+        data[key] = data[key] ? data[key] + ', ' + value : value;
+    });
+    if (data._honey) return;
+
+    button.disabled = true;
+    status.textContent = 'sending...';
+    try {
+        const response = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (!response.ok || String(result.success) !== 'true') throw new Error(result.message);
+        form.reset();
+        status.textContent = "thanks! i'll get back to you within a couple of days.";
+    } catch (error) {
+        status.textContent = "something went wrong. mind emailing me directly instead?";
+        button.disabled = false;
+    }
+});
+</script>

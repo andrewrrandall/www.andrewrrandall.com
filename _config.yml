@@ -31,6 +31,10 @@ plugins:
 feed:
   path: feed.xml
 
+# FormSubmit.co endpoint for the work-with-me form. After activating, replace the
+# email with the random ID FormSubmit sends you so the address isn't in the HTML.
+contact_form_id: andrewraymondrandall@gmail.com
+
 # Icon row on the home page. `icon` matches a file in _includes/icons/.
 social_links:
   - name: GitHub
