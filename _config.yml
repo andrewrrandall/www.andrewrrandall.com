@@ -3,10 +3,16 @@ description: "Andrew Randall's personal site and blog."
 url: "https://andrewrrandall.com"
 author: Andrew Randall
 lang: en_US
-image: /photos/IMG_0043.JPG
 twitter:
   username: andrewrrandall
   card: summary
+
+# Default link-preview image for every page (a post can override with `image:`)
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /photos/IMG_0043.JPG
 
 markdown: kramdown
 kramdown:
