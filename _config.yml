@@ -1,5 +1,13 @@
 title: andrew randall
+description: "Andrew Randall's personal site and blog."
 url: "https://andrewrrandall.com"
+author: Andrew Randall
+lang: en_US
+image: /photos/IMG_0043.JPG
+twitter:
+  username: andrewrrandall
+  card: summary
+
 markdown: kramdown
 kramdown:
   input: GFM
@@ -7,7 +15,40 @@ kramdown:
 # Posts live in _posts/ and are published at /blogs/<slug>.html
 permalink: /blogs/:title.html
 
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+feed:
+  path: feed.xml
+
+# Icon row on the home page. `icon` matches a file in _includes/icons/.
+social_links:
+  - name: GitHub
+    icon: github
+    url: https://github.com/andrewrrandall
+  - name: LinkedIn
+    icon: linkedin
+    url: https://www.linkedin.com/in/andrewraymondrandall/
+  - name: Email
+    icon: gmail
+    url: mailto:andrewraymondrandall@gmail.com
+  - name: X
+    icon: x
+    url: https://x.com/andrewrrandall
+  - name: Spotify
+    icon: spotify
+    url: https://open.spotify.com/user/1298344225?si=ac21f68e842a4f7f
+  - name: Strava
+    icon: strava
+    url: https://www.strava.com/athletes/30032538
+
 exclude:
   - README.md
   - new-post.sh
+  - serve.sh
   - files
+  - Gemfile
+  - Gemfile.lock
+  - vendor

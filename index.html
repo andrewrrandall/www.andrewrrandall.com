@@ -1,49 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Andrew Randall</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="photos/IMG_0043.JPG" type="image/jpeg">
-</head>
-<body class="center">
-    <div class="topnav">
-        <h1>hi, my name is andrew</h1>
-    </div>
+---
+layout: default
+heading: hi, my name is andrew
+main_class: home
+---
+<img class="avatar" src="{{ '/photos/IMG_0043.JPG' | relative_url }}" alt="Photo of Andrew Randall">
 
-    <hr>
-    <div class="MyNav">
-        <a href="index.html">home</a>
-        <a href="blogs/writing.html">writing</a>
-    </div>
-    <hr>
-    <br>
-    <div class="circle">
-        <img src="photos/IMG_0043.JPG" alt="Image of Me">
-    </div>
-    <br>
-    <br>
-    <p1 class="body" style="font-size:20px">
-        <a href="https://github.com/andrewrrandall"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub logo" width="35" height="auto"></a>
-        <a href="https://www.linkedin.com/in/andrewraymondrandall/"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn logo" width="35" height="auto"></a>
-        <a href="mailto:andrewraymondrandall@gmail.com"><img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail Logo" width="35" height="auto"></a>
-        <a href="https://twitter.com/andrewrrandall"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter Logo" width="35" height="auto"></a>
-        <a href="https://open.spotify.com/user/1298344225?si=ac21f68e842a4f7f"><img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify Logo" width="35" height="auto"></a> 
-        <a href="https://www.strava.com/athletes/30032538"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Strava_Logo.svg" alt="Strava Logo" width="75" height="auto"></a>   
-        <br><br>
-    </p1>
-    <button onclick="window.open('resume.html')" class="button-31" role="button">view resume</button>
-    <br><br>
-    <section>
-      <div id="github-chart" style="text-align: center;">
-          <a href="https://github.com/andrewrrandall" target="_blank">
-              <img src="https://ghchart.rshah.org/andrewrrandall" alt="GitHub Contributions" style="max-width: 100%;" />
-          </a>
-      </div>
-      <div id="contribution-count" style="text-align: center; margin-top: 10px; font-family: 'Garamond', serif; font-size: 10pt;"></div>
-  </section>
-  
-  <script src="script.js"></script>
-  </body>
-  </html>
+<ul class="social-links">
+    {% for link in site.social_links %}
+    <li>
+        <a href="{{ link.url }}" aria-label="{{ link.name }}" title="{{ link.name }}" class="social-{{ link.icon }}">
+            {% include icons/{{ link.icon }}.svg %}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+
+<a class="button" href="{{ '/resume.html' | relative_url }}">view resume</a>
+
+<section class="latest-posts">
+    <h2 class="section-title">latest writing</h2>
+    {% include post-list.html posts=site.posts limit=3 %}
+    <p><a href="{{ '/blogs/writing.html' | relative_url }}">all posts &rarr;</a></p>
+</section>
+
+<section class="github-activity">
+    <a href="https://github.com/andrewrrandall" target="_blank" rel="noopener">
+        <img src="https://ghchart.rshah.org/andrewrrandall" alt="GitHub contributions chart" loading="lazy">
+    </a>
+    <p id="contribution-count"></p>
+</section>
+
+<script src="{{ '/script.js' | relative_url }}"></script>

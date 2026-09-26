@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-<section class="post">
-    <h2>{{ page.title }}</h2>
-    <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+<article class="post">
+    <h2 class="post-title">{{ page.title }}</h2>
+    <p class="post-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
     {{ content }}
-</section>
+</article>
